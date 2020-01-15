@@ -13,6 +13,7 @@ namespace sorted {
 
 bool Bubble(std::vector<int> data);
 bool Bubble_v1(int *, int *);
+void ShakerSort(std::vector<int> &data);
 
 }  // namespace sorted
 
