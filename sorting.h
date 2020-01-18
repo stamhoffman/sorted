@@ -8,12 +8,27 @@ namespace sorted {
 /**
  * @brief сортировка пузырьком
  * @param[in] data входной массив
- * @return результат открытия , 1 - ОК , -1 - ошибка
  */
-
 bool Bubble(std::vector<int> data);
+/**
+ * @brief сортировка пузырьком 2
+ * @param[in] data входной массив
+ */
 bool Bubble_v1(int *, int *);
+
+/**
+ * @brief шейкерная сортировка
+ * @param[in] data входной массив
+ */
 void ShakerSort(std::vector<int> &data);
+
+/**
+ * @brief сортировка пузырьком
+ * @param[in] итератор на начало массива
+ * @param[in] итератор на конец массива
+ */
+void QuickSorted(std::vector<int>::iterator begin,
+                 std::vector<int>::iterator end, std::vector<int> &data);
 
 }  // namespace sorted
 
