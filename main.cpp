@@ -17,7 +17,7 @@ Container CreateData(const size_t size_massiv) {
 }
 
 int main() {
-  auto data = CreateData<std::vector<int>>(10);
+  auto data = std::vector<int>{10, 4, 2, 14, 67, 2, 11, 33, 1, 15};
   std::copy(data.begin(), data.end(),
             std::ostream_iterator<int>(std::cout, " \n"));
   QuickSorted(data.begin(), data.end(), data);

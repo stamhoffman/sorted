@@ -65,26 +65,17 @@ void QuickSorted(std::vector<int>::iterator begin,
                  std::vector<int>::iterator end, std::vector<int> &data) {
   std::vector<int>::iterator left_itr = begin + 1;
   std::vector<int>::iterator right_itr = end - 1;
-  int i = 1;
-  int j = 1;
 
-  while (left_itr < end - 2) {
+  while (left_itr++ < right_itr) {
     if (*left_itr > *begin) {
-      for (right_itr = end - 1; right_itr > left_itr; right_itr--) {
+      while (right_itr-- > left_itr) {
         if (*right_itr < *begin) {
           auto buffer = *left_itr;
           *left_itr = *right_itr;
           *right_itr = buffer;
-          i++;
-          left_itr = begin + i;
           break;
         }
       }
-    }
-    if (j == i) {
-      left_itr++;
-    } else {
-      j++;
     }
   }
 
