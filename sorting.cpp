@@ -61,46 +61,35 @@ void ShakerSort(std::vector<int> &data) {
   }
 }
 
-
-void QuickSorted(const std::vector<int>::iterator begin,
+  void QuickSorted(const std::vector<int>::iterator begin,
                  const std::vector<int>::iterator end, std::vector<int> &data) {
-  std::vector<int>::iterator left_itr = begin;
+  std::vector<int>::iterator left_itr = begin + 1;
   std::vector<int>::iterator right_itr = end - 1;
 
   if (std::distance(begin, end) == 1) {
-    if (*left_itr == *right_itr) {
-      left_itr--;
-    }
-    if (*left_itr > *right_itr) {
-      std::swap(*left_itr, *right_itr);
+    if (*begin > *end) {
+      std::swap(*begin, *end);
     }
     return;
   }
 
-  if (std::distance(begin, end) == 2) {
-    if (*left_itr > *right_itr) {
-      std::swap(*left_itr, *right_itr);
-    }
-    return;
-  }
-
-  while (left_itr < right_itr) {
-    while (*left_itr <= *begin && left_itr < right_itr) {
+  while (left_itr < (right_itr - 1)) {
+    while (*left_itr < *begin) {
       left_itr++;
     }
-    while (*right_itr >= *begin && left_itr < right_itr) {
+    while (*right_itr > *begin) {
       right_itr--;
     }
     if (*left_itr > *right_itr) {
       std::swap(*left_itr, *right_itr);
     }
   }
-  left_itr--;
+
   std::swap(*left_itr, *begin);
-  if (left_itr > begin) {
+  if (begin < right_itr) {
     QuickSorted(begin, left_itr, data);
   }
-  if (right_itr > left_itr) {
+  if (end > left_itr) {
     QuickSorted(right_itr, end, data);
   }
 }
