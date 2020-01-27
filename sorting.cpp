@@ -94,4 +94,41 @@ void ShakerSort(std::vector<int> &data) {
   }
 }
 
+  template <typename T>
+void MergeSort(T array[], std::size_t size) noexcept {
+  if (size > 1) {
+    std::size_t const left_size = size / 2;
+    std::size_t const right_size = size - left_size;
+
+    MergeSort(&array[0], left_size);
+    MergeSort(&array[left_size], right_size);
+
+    std::size_t len_x = 0, len_y = left_size, x = 0;
+    std::unique_ptr<T[]> buffer(new T[size]);
+
+    while (len_x < left_size || len_y < size) {
+      if (array[len_x] < array[len_y]) {
+        buffer[x++] = std::move(array[len_x]);
+        len_x++;
+      } else {
+        buffer[x++] = std::move(array[len_y]);
+        len_y++;
+      }
+
+      if (len_x == left_size) {
+        std::copy(std::make_move_iterator(&array[len_y]),
+                  std::make_move_iterator(&array[size]), &buffer[x]);
+        break;
+      }
+      if (len_y == size) {
+        std::copy(std::make_move_iterator(&array[len_x]),
+                  std::make_move_iterator(&array[left_size]), &buffer[x]);
+        break;
+      }
+    }
+    std::copy(std::make_move_iterator(&buffer[0]),
+              std::make_move_iterator(&buffer[size]), array);
+  }
+}
+  
 }  // namespace sorted
