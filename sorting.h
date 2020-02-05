@@ -30,6 +30,12 @@ void ShakerSort(std::vector<int> &data);
 void QuickSorted(std::vector<int>::iterator begin,
                  std::vector<int>::iterator end, std::vector<int> &data);
 
+  /**
+ * @brief сортировка вставками
+ * @param[in] data массив
+ */
+  void SortInsert(std::vector<int> &data)
+  
 }  // namespace sorted
 
 #endif  // SORTING_H
