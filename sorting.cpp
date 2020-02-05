@@ -131,4 +131,17 @@ void MergeSort(T array[], std::size_t size) noexcept {
   }
 }
   
+  void SortInsert(std::vector<int> &data) {
+  std::vector<int>::iterator stop = data.end() - 1;
+  std::vector<int>::iterator max = data.begin();
+  while (max != stop) {
+    for (std::vector<int>::iterator itr = data.begin(); itr != stop; itr++) {
+      if (*itr >= *max) {
+        max = itr;
+      }
+    }
+    std::swap(*stop--, *max);
+  }
+}
+  
 }  // namespace sorted
